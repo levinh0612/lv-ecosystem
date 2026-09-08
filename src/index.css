@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #08090b;
+  --bg-raised: #101216;
+  --line: #23262c;
+  --line-bright: #3a3f47;
+  --ink: #eef0f2;
+  --ink-dim: #8b9098;
+  --ink-faint: #565b62;
+  --amber: #ffb454;
+  --amber-dim: #7a5a2e;
+  --teal: #5ee6c8;
+  --live: #5ee6a8;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--amber);
+  color: #08090b;
+}
+
+/* faint blueprint grid, isolated on a pseudo-element so the mask never touches real content */
+.grid-field {
+  position: relative;
+}
+.grid-field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+@keyframes blip {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(94, 230, 168, 0.5);
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 6px rgba(94, 230, 168, 0);
+  }
+}
+
+.status-live {
+  animation: blip 2.4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-glow {
+  text-shadow: 0 0 40px rgba(255, 180, 84, 0.25);
+}
+
+/* thin custom scrollbar to match the console feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-bright);
+  border-radius: 0;
+}
