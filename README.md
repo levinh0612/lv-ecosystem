@@ -2,7 +2,7 @@
 
 Trạm điều phối cá nhân — một trang tổng hợp các webapp tiện ích đã xây dựng, mỗi app được hiển thị dưới dạng một "node" kèm trạng thái (live/dev), mô tả ngắn, stack và link truy cập.
 
-**Live:** _(cập nhật sau khi deploy)_
+**Live:** https://lv-ecosystem.vercel.app
 
 ## Stack
 
