@@ -1,5 +1,6 @@
 import cvShot from "./assets/screenshots/cv.jpg";
 import ldStoreShot from "./assets/screenshots/ld-store-anh3.jpg";
+import lvDeltaForceShot from "./assets/screenshots/lv-delta-force.jpg";
 import lvHealthShot from "./assets/screenshots/lv-health.jpg";
 import lvShoppingShot from "./assets/screenshots/lv-shopping.jpg";
 
@@ -64,6 +65,18 @@ const nodes: Node[] = [
     status: "live",
     url: "https://ld-store-anh3.vercel.app",
     shot: ldStoreShot,
+  },
+  {
+    codename: "lv-delta-force",
+    name: "Delta Force Tân Binh",
+    tagline: "Hướng dẫn 7 ngày cho team WP",
+    description:
+      "Lộ trình 7 ngày cho người mới chơi Delta Force kèm bản đồ, operator, tips theo trình độ, nhật ký raid, máy tính loadout và quiz.",
+    stack: ["React", "Vite", "TypeScript"],
+    status: "live",
+    url: "https://lv-delta-force.vercel.app",
+    github: "https://github.com/levinh0612/lv-delta-force",
+    shot: lvDeltaForceShot,
   },
   {
     codename: "poke-task-master",
