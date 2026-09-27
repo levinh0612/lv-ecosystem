@@ -1,12 +1,14 @@
 import cvShot from "./assets/screenshots/cv.jpg";
 import ldStoreShot from "./assets/screenshots/ld-store-anh3.jpg";
 import lvDeltaForceShot from "./assets/screenshots/lv-delta-force.jpg";
+import lvMinigame1Shot from "./assets/screenshots/lv-minigame-1.png";
 import lvHealthShot from "./assets/screenshots/lv-health.jpg";
 import lvShoppingShot from "./assets/screenshots/lv-shopping.jpg";
 
 type Status = "live" | "dev" | "offline";
 
 type Node = {
+  seqno: number;  // sequence number
   codename: string;
   name: string;
   tagline: string;
@@ -20,6 +22,7 @@ type Node = {
 
 const nodes: Node[] = [
   {
+    seqno: 1,
     codename: "cv",
     name: "CV Song Ngữ",
     tagline: "Không phải PDF tĩnh",
@@ -32,6 +35,7 @@ const nodes: Node[] = [
     shot: cvShot,
   },
   {
+    seqno: 2,
     codename: "lv-health",
     name: "Nhật Ký Sức Khỏe",
     tagline: "Theo dõi cân nặng & InBody",
@@ -44,6 +48,7 @@ const nodes: Node[] = [
     shot: lvHealthShot,
   },
   {
+    seqno: 3,
     codename: "lv-shopping",
     name: "Sắm Sửa",
     tagline: "Danh sách mua sắm thông minh",
@@ -56,6 +61,7 @@ const nodes: Node[] = [
     shot: lvShoppingShot,
   },
   {
+    seqno: 4,
     codename: "ld-store-anh3",
     name: "Anh Ba Cơm Tấm",
     tagline: "Gọi đặt món, giao tận nơi",
@@ -67,6 +73,7 @@ const nodes: Node[] = [
     shot: ldStoreShot,
   },
   {
+    seqno: 5,
     codename: "lv-delta-force",
     name: "Delta Force Tân Binh",
     tagline: "Hướng dẫn 7 ngày cho team WP",
@@ -79,6 +86,20 @@ const nodes: Node[] = [
     shot: lvDeltaForceShot,
   },
   {
+    seqno: 6,
+    codename: "lv-minigame-1",
+    name: "Tiệm Bánh nhỏ",
+    tagline: "Web game bán bánh cho người yêu",
+    description:
+      "Đại khái là một web game bán bánh cho người yêu.",
+    stack: ["React", "Vite", "TypeScript"],
+    status: "live",
+    url: "https://lv-minigame-1.vercel.app",
+    github: "https://github.com/levinh0612/lv-minigame-1",
+    shot: lvMinigame1Shot,
+  },
+  {
+    seqno: 7,
     codename: "poke-task-master",
     name: "PokéTask Master",
     tagline: "Todo list kiểu gamify",
@@ -88,6 +109,7 @@ const nodes: Node[] = [
     status: "dev",
   },
   {
+    seqno: 8,
     codename: "landing-page-factory",
     name: "Landing Page Factory",
     tagline: "Nền tảng dựng landing page",
@@ -122,22 +144,22 @@ function Logo({ className }: { className?: string }) {
 function NodePreview({ node }: { node: Node }) {
   if (node.shot) {
     return (
-      <div className="relative aspect-video overflow-hidden border-b border-[var(--line)] bg-[var(--bg)]">
+      <div className="relative aspect-video overflow-hidden border-b border-(--line) bg-(--bg)">
         <img
           src={node.shot}
           alt={`Ảnh chụp giao diện ${node.name}`}
           loading="lazy"
           className="h-full w-full object-cover object-top grayscale-[35%] transition-all duration-500 ease-out group-hover:scale-[1.06] group-hover:grayscale-0"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--bg-raised)] via-transparent to-transparent opacity-90" />
-        <div className="pointer-events-none absolute inset-0 translate-y-[-100%] bg-gradient-to-b from-transparent via-[rgba(255,180,84,0.08)] to-transparent transition-transform duration-700 ease-out group-hover:translate-y-[100%]" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-(--bg-raised) via-transparent to-transparent opacity-90" />
+        <div className="pointer-events-none absolute inset-0 translate-y-[-100%] bg-linear-to-b from-transparent via-[rgba(255,180,84,0.08)] to-transparent transition-transform duration-700 ease-out group-hover:translate-y-[100%]" />
       </div>
     );
   }
 
   return (
-    <div className="relative flex aspect-video items-center justify-center overflow-hidden border-b border-[var(--line)] bg-[repeating-linear-gradient(135deg,var(--line)_0px,var(--line)_1px,transparent_1px,transparent_14px)]">
-      <span className="border border-[var(--amber-dim)] px-3 py-1 text-[11px] tracking-[0.2em] text-[var(--amber)]">
+    <div className="relative flex aspect-video items-center justify-center overflow-hidden border-b border-(--line) bg-[repeating-linear-gradient(135deg,var(--line)_0px,var(--line)_1px,transparent_1px,transparent_14px)]">
+      <span className="border border-(--amber-dim) px-3 py-1 text-[11px] tracking-[0.2em] text-(--amber)">
         ĐANG XÂY DỰNG
       </span>
     </div>
@@ -148,13 +170,13 @@ function NodeCard({ node, index }: { node: Node; index: number }) {
   const meta = statusMeta[node.status];
   return (
     <article
-      className="rise group relative overflow-hidden border border-[var(--line)] bg-[var(--bg-raised)] transition-colors duration-300 hover:border-[var(--line-bright)]"
+      className="rise group relative overflow-hidden border border-(--line) bg-(--bg-raised) transition-colors duration-300 hover:border-(--line-bright)"
       style={{ animationDelay: `${index * 90}ms` }}
     >
       <NodePreview node={node} />
 
       <div className="p-6">
-        <div className="flex items-center justify-between text-xs tracking-widest text-[var(--ink-faint)]">
+        <div className="flex items-center justify-between text-xs tracking-widest text-(--ink-faint)">
           <span>NODE {String(index + 1).padStart(2, "0")}</span>
           <span className={`inline-flex items-center gap-2 ${meta.text}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
@@ -162,13 +184,13 @@ function NodeCard({ node, index }: { node: Node; index: number }) {
           </span>
         </div>
 
-        <p className="mt-5 text-xs text-[var(--ink-faint)]">/{node.codename}</p>
-        <h3 className="font-display mt-1 text-2xl font-semibold leading-tight text-[var(--ink)]">
+        <p className="mt-5 text-xs text-(--ink-faint)">/{node.codename}</p>
+        <h3 className="font-display mt-1 text-2xl font-semibold leading-tight text-(--ink)">
           {node.name}
         </h3>
-        <p className="mt-1 text-sm text-[var(--amber)]">{node.tagline}</p>
+        <p className="mt-1 text-sm text-(--amber)">{node.tagline}</p>
 
-        <p className="mt-4 text-[13px] leading-relaxed text-[var(--ink-dim)]">
+        <p className="mt-4 text-[13px] leading-relaxed text-(--ink-dim)">
           {node.description}
         </p>
 
@@ -176,32 +198,32 @@ function NodeCard({ node, index }: { node: Node; index: number }) {
           {node.stack.map((s) => (
             <span
               key={s}
-              className="border border-[var(--line)] px-2 py-0.5 text-[11px] text-[var(--ink-dim)]"
+              className="border border-(--line) px-2 py-0.5 text-[11px] text-(--ink-dim)"
             >
               {s}
             </span>
           ))}
         </div>
 
-        <div className="mt-6 flex items-center gap-4 border-t border-[var(--line)] pt-4 text-sm">
+        <div className="mt-6 flex items-center gap-4 border-t border-(--line) pt-4 text-sm">
           {node.url ? (
             <a
               href={node.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-[var(--ink)] transition-colors hover:text-[var(--amber)]"
+              className="inline-flex items-center gap-1.5 text-(--ink) transition-colors hover:text-(--amber)"
             >
               Mở app <span aria-hidden>↗</span>
             </a>
           ) : (
-            <span className="text-[var(--ink-faint)]">Chưa triển khai</span>
+            <span className="text-(--ink-faint)">Chưa triển khai</span>
           )}
           {node.github && (
             <a
               href={node.github}
               target="_blank"
               rel="noreferrer"
-              className="ml-auto text-[var(--ink-faint)] transition-colors hover:text-[var(--ink)]"
+              className="ml-auto text-(--ink-faint) transition-colors hover:text-(--ink)"
               aria-label={`GitHub của ${node.name}`}
             >
               {"</>"}
@@ -218,33 +240,33 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <header className="border-b border-[var(--line)]">
+      <header className="border-b border-(--line)">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-2.5">
-            <Logo className="h-6 w-6 text-[var(--ink-faint)]" />
+            <Logo className="h-6 w-6 text-(--ink-faint)" />
             <span className="font-display text-lg font-bold tracking-tight">
-              LV<span className="text-[var(--amber)]">.</span>ECOSYSTEM
+              LV<span className="text-(--amber)">.</span>ECOSYSTEM
             </span>
           </div>
-          <div className="hidden items-center gap-2 text-xs text-[var(--ink-faint)] sm:flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--live)] status-live" />
+          <div className="hidden items-center gap-2 text-xs text-(--ink-faint)] sm:flex">
+            <span className="h-1.5 w-1.5 rounded-full bg-(--live) status-live" />
             {liveCount}/{nodes.length} NODE ĐANG HOẠT ĐỘNG
           </div>
         </div>
       </header>
 
-      <section className="grid-field relative overflow-hidden border-b border-[var(--line)]">
+      <section className="grid-field relative overflow-hidden border-b border-(--line)">
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <p className="rise text-xs tracking-[0.3em] text-[var(--ink-faint)]">
+          <p className="rise text-xs tracking-[0.3em] text-(--ink-faint)">
             TRẠM ĐIỀU PHỐI CÁ NHÂN
           </p>
           <h1 className="font-display text-glow rise mt-5 max-w-3xl text-[2.5rem] font-semibold leading-[1.05] sm:text-6xl">
             Mọi webapp tôi làm,
             <br />
-            quy về <span className="text-[var(--amber)]">một điểm.</span>
+            quy về <span className="text-(--amber)">một điểm.</span>
           </h1>
           <p
-            className="rise mt-6 max-w-xl text-sm leading-relaxed text-[var(--ink-dim)] sm:text-base"
+            className="rise mt-6 max-w-xl text-sm leading-relaxed text-(--ink-dim) sm:text-base"
             style={{ animationDelay: "120ms" }}
           >
             Danh mục các sản phẩm cá nhân — từ CV, sức khỏe, mua sắm đến các nền
@@ -261,14 +283,14 @@ function App() {
         </div>
       </main>
 
-      <footer className="border-t border-[var(--line)]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-xs text-[var(--ink-faint)] sm:flex-row sm:items-center sm:justify-between">
+      <footer className="border-t border-(--line)">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-xs text-(--ink-faint)] sm:flex-row sm:items-center sm:justify-between">
           <span>Lê Vinh · levinh0612</span>
           <a
             href="https://github.com/levinh0612"
             target="_blank"
             rel="noreferrer"
-            className="transition-colors hover:text-[var(--ink)]"
+            className="transition-colors hover:text-(--ink)"
           >
             github.com/levinh0612 ↗
           </a>
