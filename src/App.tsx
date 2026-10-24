@@ -1,5 +1,6 @@
 import cvShot from "./assets/screenshots/cv.jpg";
 import ldStoreShot from "./assets/screenshots/ld-store-anh3.jpg";
+import lvCaroShot from "./assets/screenshots/lv-caro.jpg";
 import lvDeltaForceShot from "./assets/screenshots/lv-delta-force.jpg";
 import lvMinigame1Shot from "./assets/screenshots/lv-minigame-1.png";
 import lvHealthShot from "./assets/screenshots/lv-health.jpg";
@@ -130,6 +131,7 @@ const nodes: Node[] = [
     status: "live",
     url: "https://lv-caro.vercel.app",
     github: "https://github.com/levinh0612/caro-online",
+    shot: lvCaroShot,
   },
 ];
 
