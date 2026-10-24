@@ -119,6 +119,17 @@ const nodes: Node[] = [
     status: "dev",
     github: "https://github.com/levinh0612/landing-page-factory",
   },
+  {
+    seqno: 9,
+    codename: "lv-caro",
+    name: "Caro Hai Người",
+    tagline: "Cờ caro online cho hai đứa",
+    description:
+      "Phòng caro realtime cho hai người: chọn phe, xin hoà, đầu hàng, gửi emoji, đổi bên đi trước mỗi ván. Vào phòng bằng PIN.",
+    stack: ["React", "Vite", "Socket.IO", "Node"],
+    status: "live",
+    url: "https://lv-caro.vercel.app",
+  },
 ];
 
 const statusMeta: Record<Status, { label: string; dot: string; text: string }> = {
