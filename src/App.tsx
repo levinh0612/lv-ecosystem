@@ -129,6 +129,7 @@ const nodes: Node[] = [
     stack: ["React", "Vite", "Socket.IO", "Node"],
     status: "live",
     url: "https://lv-caro.vercel.app",
+    github: "https://github.com/levinh0612/caro-online",
   },
 ];
 
